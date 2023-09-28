@@ -15,5 +15,12 @@ const Task = sequelize.sequelize.define('Task', {
     },
 });
 
+// Definindo a associação entre Task e User
+Task.associate = (models) => {
+    Task.belongsTo(models.User, { foreignKey: 'userId' });
+};
+
+module.exports = Task;
+
 module.exports = Task;
 
