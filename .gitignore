@@ -1,1 +1,11 @@
+# Node.js
 node_modules/
+
+# Arquivos de ambiente
+.env
+
+# Visual Studio Code
+.vscode/
+
+
+

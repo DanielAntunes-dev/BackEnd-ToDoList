@@ -1,8 +1,9 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
+require('dotenv').config(); // Adicionando a configuração do dotenv
 
-const sequelize = new Sequelize('nome-do-projeto-no-banco-de-dados', 'usuario', 'senha', {
-    host: 'localhost',
-    port: 5433,
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'postgres',
     logging: false,
 });
@@ -19,32 +20,32 @@ sequelize.authenticate()
 // Definindo o modelo User
 const User = sequelize.define('User', {
     name: {
-    type: Sequelize.STRING,
-    allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
     },
     password: {
-    type: Sequelize.STRING,
-    allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: false,
     },
 });
 
 // Definindo o modelo Task
 const Task = sequelize.define('Task', {
     title: {
-    type: Sequelize.STRING,
-    allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     dueDate: {
-    type: Sequelize.DATE,
+        type: DataTypes.DATE,
     },
     completed: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
 });
 
@@ -56,10 +57,10 @@ Task.belongsTo(User);
 // force: true irá recriar as tabelas se elas já existirem
 sequelize.sync({ force: false })
     .then(() => {
-    console.log('Tabelas sincronizadas com sucesso.');
+        console.log('Tabelas sincronizadas com sucesso.');
     })
     .catch((error) => {
-    console.error('Não foi possível sincronizar as tabelas:', error);
+        console.error('Não foi possível sincronizar as tabelas:', error);
     });
 
 module.exports = {
@@ -67,6 +68,3 @@ module.exports = {
     User,
     Task,
 };
-
-
-module.exports = sequelize;

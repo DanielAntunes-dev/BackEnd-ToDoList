@@ -1,0 +1,74 @@
+# API de Cadastro de Usuários e Tarefas 
+
+Esta é uma API para gerenciar usuários e suas tarefas. Permite o cadastro de usuários, autenticação, criação, edição e exclusão de tarefas.
+
+## Tecnologias Utilizadas
+=============================
+
+* **Node.js**: Plataforma de execução de código JavaScript no servidor.
+* **Express.js**: Framework para construção de aplicativos web com Node.js.
+* **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
+* **Sequelize**: ORM (Object-Relational Mapping) para PostgreSQL.
+
+## Recursos criados
+=====================
+* Login (JWT Authentication)
+* Users CRUD
+* Tasks CRUD
+
+## Configuração
+=====================
+
+### Instalação das Dependências
+- npm install
+
+
+### Crie um banco de dados PostgreSQL e configure as variáveis de ambiente no arquivo .env:
+
+**plaintext**
+Copy code
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_DATABASE=nome_do_seu_banco_de_dados
+Execução
+
+## Para executar a aplicação:
+- npm start
+
+# Rotas Api 📝
+=====================
+
+### POST /register
+Cadastrar um novo usuário
+
+### POST /login
+Autenticar um usuário
+
+### PUT /edit/:id
+Editar um usuário
+
+### POST /reset
+Recuperar a senha ou email do usuário
+
+
+### POST /task
+Criar uma nova tarefa
+
+### PUT edit/:taskId
+Editar uma tarefa existente
+
+### DELETE delete/:taskId
+Excluir uma tarefa
+
+### GET /api/tasks
+Obter todas as tarefas do usuário
+
+### GET /tasks/day/:date
+Obtém tarefas para um dia específico
+
+### GET /tasks/month/:month
+Obtém tarefas para um mês específico
+
+

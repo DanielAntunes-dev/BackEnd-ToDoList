@@ -1,19 +1,19 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/db');
 
-const Task = sequelize.define('Task', {
-    task_name: {
-    type: DataTypes.STRING,
-    allowNull: false,
+const Task = sequelize.sequelize.define('Task', {
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-    task_date: {
-    type: DataTypes.DATE,
-    allowNull: false,
+    dueDate: {
+        type: DataTypes.DATE,
     },
-    user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+    completed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
 });
 
 module.exports = Task;
+
