@@ -20,21 +20,39 @@ Esta é uma API para gerenciar usuários e suas tarefas. Permite o cadastro de u
 ## Configuração
 =====================
 
-### Instalação das Dependências
-- npm install
+### Crie um arquivo .env para configurar as variáveis de ambiente:
+
+# Configurações do banco de dados
+DB_HOST= localhost
+DB_PORT= porta do seu banco de dados (exemplo: 5433)
+DB_USER= seu nome de usuário
+DB_PASSWORD= sua senha
+DB_DATABASE= nome do seu projeto
+DB_DIALECT= nome do seu banco de dados (exemplo: postgres)
+NODE_ENV=development
+
+# Chave secreta para tokens JWT
+JWT_SECRET= crie uma senha 
+
+# Porta em que o servidor será executado
+PORT=3040
 
 
-### Crie um banco de dados PostgreSQL e configure as variáveis de ambiente no arquivo .env:
+# Clone o repositório
+$ git clone https://github.com/DanielAntunes-dev/BackEnd-ToDoList
 
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=seu_usuario
-DB_PASSWORD=sua_senha
-DB_DATABASE=nome_do_seu_banco_de_dados
+# Install dependencies
+$ npm install
 
+# Create database
+$ npm db:create
 
-## Para executar a aplicação:
-- npm start
+# Run migrations
+$ npm migration:run
+
+# Run server
+$ npm start
+
 
 # Rotas Api 📝
 =====================
